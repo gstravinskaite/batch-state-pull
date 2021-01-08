@@ -15,7 +15,7 @@ NEW_FOLDER="/apps-infra"
 
 for FILE in $LIST; do 
     printf "\n%bPulling the state from $FILE%b\n" "${YELLOW}${BOLD}" "${NOFORMAT}"
-    ls $FILE
+    cd $FILE
     NEW_REPO=$(echo $FILE | sed "s!$ENV!$ENV$NEW_FOLDER!g")
     printf "\n%bMoving the state to $NEW_REPO$STATE_FILE%b\n" "${YELLOW}${BOLD}" "${NOFORMAT}"
     terragrunt state pull > "$NEW_REPO$STATE_FILE"
