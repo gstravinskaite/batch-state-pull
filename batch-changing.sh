@@ -13,7 +13,7 @@ LIST=$2
 STATE_FILE="/terraform.tfstate"
 NEW_FOLDER="/apps-infra"
 
-for FILE in $LIST; do 
+for FILE in $(cat $LIST); do 
     printf "\n%bPulling the state from $FILE%b\n" "${YELLOW}${BOLD}" "${NOFORMAT}"
     cd $FILE
     NEW_REPO=$(echo $FILE | sed "s!$ENV!$ENV$NEW_FOLDER!g")
